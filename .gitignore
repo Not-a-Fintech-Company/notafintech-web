@@ -9,3 +9,6 @@ analytics-credentials.md
 .google-client-secret.json
 .google-token.json
 .seo-creds/
+
+# auto-generated site health report
+SITE-HEALTH.md

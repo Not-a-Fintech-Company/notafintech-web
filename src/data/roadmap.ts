@@ -14,12 +14,17 @@ export interface RoadmapCategory {
 
 export interface RoadmapSection {
   title: string;
+  /** GitHub issue tracking this section's planned items. */
+  issue: number;
   categories: RoadmapCategory[];
 }
+
+export const issuesUrl = 'https://github.com/Not-a-Fintech-Company/notafintech-web/issues';
 
 export const roadmap: RoadmapSection[] = [
   {
     title: 'Guides',
+    issue: 25,
     categories: [
       {
         title: 'Foundations',
@@ -34,8 +39,6 @@ export const roadmap: RoadmapSection[] = [
         title: 'Operations',
         items: [
           { label: 'Financial crime prevention and compliance partner selection', status: 'planned' },
-          { label: 'Card product operational preparation', status: 'planned' },
-          { label: 'Managing cards/payments/compliance vendors and sponsor bank relationships', status: 'planned' },
           { label: 'Financial Crime compliance roles, responsibilities, and alerts', status: 'planned' },
         ],
       },
@@ -43,15 +46,13 @@ export const roadmap: RoadmapSection[] = [
   },
   {
     title: 'Models',
+    issue: 26,
     categories: [
       {
         title: 'Identity & Fraud',
         items: [
           { label: 'Financial Crime risk assessment', status: 'planned' },
-          { label: 'Origination Fraud', status: 'planned' },
-          { label: 'KYC & Identity Fraud', status: 'planned' },
-          { label: 'Transactional Fraud', status: 'planned' },
-          { label: 'Synthetic Fraud', status: 'planned' },
+          { label: 'Fraud loss (origination, KYC & identity, transactional, synthetic)', status: 'planned' },
         ],
       },
       {
@@ -60,32 +61,27 @@ export const roadmap: RoadmapSection[] = [
           { label: 'Bank Accounts (debit & savings)', href: '/models/bank-account/', status: 'published' },
           { label: 'Term Loans (installment, mortgage, student)', href: '/models/term-loan/', status: 'published' },
           { label: 'Credit Cards (credit & charge)', href: '/models/credit-card/', status: 'published' },
-          { label: 'Debit cards', status: 'planned' },
-          { label: 'Insurance', status: 'planned' },
-          { label: 'Brokerage Accounts', status: 'planned' },
         ],
       },
       {
         title: 'Underwriting',
         items: [
           { label: 'Credit Risk (Mortgage, Credit Card, Installment, Auto, Payday)', status: 'planned' },
-          { label: 'ACH Risk', status: 'planned' },
-          { label: 'Wire Risk', status: 'planned' },
+          { label: 'Payments risk (ACH & wire)', status: 'planned' },
         ],
       },
       {
         title: 'People',
         items: [
-          { label: 'Customer Operations', status: 'planned' },
-          { label: 'Financial Crime Operations', status: 'planned' },
-          { label: 'Product', status: 'planned' },
-          { label: 'Engineering', status: 'planned' },
+          { label: 'Customer Operations staffing', status: 'planned' },
+          { label: 'Financial Crime Operations staffing', status: 'planned' },
         ],
       },
     ],
   },
   {
     title: 'Disclosures & Agreements',
+    issue: 27,
     categories: [
       {
         title: 'Credit Card',
@@ -98,24 +94,21 @@ export const roadmap: RoadmapSection[] = [
       {
         title: 'Bank Account',
         items: [
-          { label: 'Deposit Account Agreement', status: 'planned' },
-          { label: 'Saving Account Agreement', status: 'planned' },
-          { label: 'Automatic Savings Account Agreement', status: 'planned' },
+          { label: 'Deposit Account Agreement (checking, savings, automatic savings)', status: 'planned' },
         ],
       },
       {
         title: 'General',
         items: [
-          { label: 'Electronic Communications Agreement', status: 'planned' },
-          { label: 'eSign Agreement', status: 'planned' },
-          { label: 'Terms and Conditions', status: 'planned' },
-          { label: 'Company Privacy Policy', status: 'planned' },
+          { label: 'E-SIGN consent (electronic communications)', status: 'planned' },
+          { label: 'GLBA Privacy Notice', status: 'planned' },
         ],
       },
     ],
   },
   {
     title: 'Policies',
+    issue: 28,
     categories: [
       {
         title: 'Compliance & Risk',
@@ -133,14 +126,14 @@ export const roadmap: RoadmapSection[] = [
   },
   {
     title: 'Procedures',
+    issue: 29,
     categories: [
       {
         title: 'Operations',
         items: [
-          { label: 'Customer Service Manual', status: 'planned' },
+          { label: 'Complaints & disputes (Reg E / Reg Z)', status: 'planned' },
           { label: 'SAR Filing Process', status: 'planned' },
           { label: 'OFAC Procedure', status: 'planned' },
-          { label: 'Financial Crime prevention manual', status: 'planned' },
         ],
       },
     ],

@@ -1,6 +1,6 @@
 ---
 // src/components/blocks/RoadmapGrid.astro
-import { roadmap, type Status } from '../../data/roadmap';
+import { roadmap, issuesUrl, type Status } from '../../data/roadmap';
 import { ExternalLink, FileText, PenLine, Circle } from '@lucide/astro';
 
 const statusMeta: Record<Status, { label: string; iconName: string }> = {
@@ -22,15 +22,26 @@ const icons = { FileText, PenLine, Circle, ExternalLink };
     <p class="mt-5 text-lg text-muted leading-relaxed">
       A living catalog of everything in scope. Some items are published.
       Others are planned, drafting, or linked to external authoritative sources.
+      Each section's planned work is tracked as a GitHub issue, so you can pick
+      something up or suggest an addition.
     </p>
   </header>
 
   <div class="space-y-16">
     {roadmap.map((section) => (
       <div>
-        <h3 class="font-display text-2xl font-semibold text-ink mb-6 pb-3 border-b border-rule">
-          {section.title}
-        </h3>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 mb-6 pb-3 border-b border-rule">
+          <h3 class="font-display text-2xl font-semibold text-ink">{section.title}</h3>
+          <a
+            href={`${issuesUrl}/${section.issue}`}
+            rel="noopener noreferrer"
+            target="_blank"
+            class="inline-flex items-center gap-1.5 text-sm text-muted underline underline-offset-[3px] decoration-1 decoration-[color:var(--color-rule)] hover:text-accent hover:decoration-[color:var(--color-accent)] transition-colors"
+          >
+            Planned work on GitHub
+            <ExternalLink class="w-3.5 h-3.5" aria-hidden="true" />
+          </a>
+        </div>
         <div class="grid gap-x-10 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           {section.categories.map((cat) => (
             <div>

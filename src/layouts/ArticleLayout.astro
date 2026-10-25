@@ -9,11 +9,8 @@ import Sidebar from '../components/nav/Sidebar.astro';
 import Toc from '../components/nav/Toc.astro';
 import Prose from '../components/ui/Prose.astro';
 import type { MarkdownHeading } from 'astro';
+import { articleSchema, type Author } from '../lib/article-schema';
 
-interface Author {
-  name: string;
-  url?: string;
-}
 interface Props {
   title: string;
   description: string;
@@ -46,37 +43,12 @@ const crumbs = [
 const showSidebar = !hideSidebar && !!section;
 const showToc = !hideToc;
 
-const siteUrl = Astro.site!.toString().replace(/\/$/, '');
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const ogImagePath = ogImage ?? '/og-image.png';
-const ogImageAbsolute = ogImagePath.startsWith('http')
-  ? ogImagePath
-  : new URL(ogImagePath, Astro.site).toString();
-
-const authorSchema = authors?.map((a) => ({
-  '@type': 'Person',
-  name: a.name,
-  ...(a.url ? { url: a.url } : {}),
-}));
-
-const articleSchema = publishedAt
-  ? {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      headline: title,
-      description,
-      url: canonicalUrl,
-      image: ogImageAbsolute,
-      datePublished: publishedAt.toISOString(),
-      dateModified: (updatedAt ?? publishedAt).toISOString(),
-      ...(authorSchema && authorSchema.length > 0 ? { author: authorSchema } : {}),
-      publisher: { '@id': `${siteUrl}/#organization` },
-      isPartOf: { '@id': `${siteUrl}/#website` },
-      mainEntityOfPage: canonicalUrl,
-      inLanguage: 'en-US',
-      license: 'https://creativecommons.org/publicdomain/zero/1.0/',
-    }
-  : null;
+const schema = publishedAt
+  ? articleSchema({
+      title, description, site: Astro.site!, pathname: Astro.url.pathname,
+      ogImage, publishedAt, updatedAt, authors,
+    })
+  : undefined;
 ---
 
 <BaseLayout
@@ -86,7 +58,7 @@ const articleSchema = publishedAt
   pageType="article"
   publishedTime={publishedAt}
   modifiedTime={updatedAt ?? publishedAt}
-  schema={articleSchema ?? undefined}
+  {schema}
 >
   <Header />
   <MobileMenu />

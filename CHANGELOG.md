@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-25 — Repo renamed to `notafintech-web`, 1Password migration docs
+
+### Changed
+- **GitHub repo renamed** from `Not-a-Fintech-Company/Website` to `Not-a-Fintech-Company/notafintech-web` (PR #23). Updated the 9 hardcoded links: header, hero, home page, footer nav (2), about page, the Organization `sameAs` JSON-LD in `BaseLayout`, plus `DEPLOYMENT.md` and `MIGRATION.md`. GitHub redirects the old URL, so older backlinks still resolve. Production showed the new links about 50 seconds after merge
+- **Repo homepage field** on GitHub set to `https://www.notafintech.co` (it was empty)
+- Cloudflare Pages needed no changes. The Git integration tracks the repo by ID, and the branch preview built cleanly after the rename
+
+### Added
+- **`docs/1password-migration.md`** and **`docs/op-migration.json`** (PR #22): brief, spec, and manifest for moving local credential files (`.google-client-secret.json`, `.google-token.json`) into 1Password. The manifest lists item titles, tags, and file paths only, with no secret values
+
+---
+
 ## 2026-06-13 — favicon.ico, 404 page, health-check script, CF token cleanup
 
 ### Added

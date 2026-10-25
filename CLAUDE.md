@@ -94,7 +94,7 @@ src/
 - `guides/` — Educational guides for fintech founders (5 guides + index), each with an attributed author byline
 - `models/` — Financial model templates with Google Sheets embeds (3 models + index), each with 200-400 words of explanatory prose
 - `docs/` — Compliance documentation: BSA policy (inline markdown), credit card trunk (PDF iframe + downloads)
-- `tools/` — Interactive calculators: Term Loan Unit Economics live; Bank Account + Credit Card are rich-preview stubs (200-300 words describing what the calculator will model) linking to `/models/*`
+- `tools/` — Interactive calculators: Term Loan Unit Economics only. The Bank Account and Credit Card stubs were removed (#38) because they competed with `/models/*` for the same queries; `/tools/bank-account/` and `/tools/credit-card/` 301 to the model pages in `_redirects`. When a calculator ships, recreate the page and delete its redirect
 - `resources.md`, `about.md`, `license.md` — top-level pages
 
 **Static assets** (`public/`):

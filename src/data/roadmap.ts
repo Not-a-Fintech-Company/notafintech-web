@@ -64,6 +64,7 @@ export const roadmap: RoadmapSection[] = [
           { label: 'Bank Accounts (debit & savings)', href: '/models/bank-account/', status: 'published' },
           { label: 'Term Loans (installment, mortgage, student)', href: '/models/term-loan/', status: 'published' },
           { label: 'Credit Cards (credit & charge)', href: '/models/credit-card/', status: 'published' },
+          { label: 'Interactive calculators: bank account & credit card', status: 'planned' },
         ],
       },
       {

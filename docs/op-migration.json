@@ -1,0 +1,30 @@
+{
+  "_status": "confirmed 2026-10-25 (runbook step 2)",
+  "account": "totavi.1password.com",
+  "vault": "Totavi-Dev",
+  "files": [],
+  "items": {},
+  "documents": [
+    {
+      "path": ".google-client-secret.json",
+      "title": "totavi-google-oauth-client",
+      "tags": [
+        "totavi",
+        "google",
+        "shared"
+      ]
+    },
+    {
+      "path": ".google-token.json",
+      "title": "notafintech-google-oauth",
+      "tags": [
+        "notafintech",
+        "google"
+      ],
+      "ignore_keys": [
+        "token",
+        "expiry"
+      ]
+    }
+  ]
+}

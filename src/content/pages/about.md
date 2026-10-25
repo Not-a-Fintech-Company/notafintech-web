@@ -19,7 +19,7 @@ Each [guide](/guides/) is contributed by one or more practitioners who have actu
 
 ## Contribute
 
-The site source is on [GitHub](https://github.com/Not-a-Fintech-Company/Website) under CC0. Pull requests are welcome. If you have a guide to contribute, a correction to propose, or a financial model you'd like to share, reach out at [hello@notafintech.co](mailto:hello@notafintech.co).
+The site source is on [GitHub](https://github.com/Not-a-Fintech-Company/notafintech-web) under CC0. Pull requests are welcome. If you have a guide to contribute, a correction to propose, or a financial model you'd like to share, reach out at [hello@notafintech.co](mailto:hello@notafintech.co).
 
 ## Contributors
 

@@ -16,7 +16,7 @@ export const topNav: NavItem[] = [
 export const footerSections: NavItem[] = [...topNav];
 
 export const footerCommunity: NavItem[] = [
-  { label: 'GitHub', href: 'https://github.com/Not-a-Fintech-Company/Website', external: true },
-  { label: 'Contribute', href: 'https://github.com/Not-a-Fintech-Company/Website/blob/main/README.md', external: true },
+  { label: 'GitHub', href: 'https://github.com/Not-a-Fintech-Company/notafintech-web', external: true },
+  { label: 'Contribute', href: 'https://github.com/Not-a-Fintech-Company/notafintech-web/blob/main/README.md', external: true },
   { label: 'hello@notafintech.co', href: 'mailto:hello@notafintech.co' },
 ];

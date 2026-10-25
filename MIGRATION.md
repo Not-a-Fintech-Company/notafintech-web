@@ -18,7 +18,7 @@ The site started life as a Jekyll 4.x site served from GitHub Pages. In February
 ### Cutover steps (completed)
 
 1. Merged the `astro-migration` branch into `main`
-2. Created the Cloudflare Pages project pointed at `Not-a-Fintech-Company/Website` `main` with build command `npm run build` and output directory `dist`
+2. Created the Cloudflare Pages project pointed at `Not-a-Fintech-Company/notafintech-web` `main` with build command `npm run build` and output directory `dist`
 3. Disabled GitHub Pages in the repo settings (`Settings > Pages > Source: None`)
 4. Added `www.notafintech.co` (primary) and `notafintech.co` (redirect) as custom domains in the Cloudflare Pages project, plus a Cloudflare redirect rule for `notafintech.co` → `www.notafintech.co` (301)
 5. Verified SSL (Full/strict), site rendering across all sections, sitemap + robots.txt + OG image, both analytics dashboards

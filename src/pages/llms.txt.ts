@@ -3,33 +3,33 @@
 // lists exactly the pages that are published and can't drift from the sitemap.
 import type { APIRoute } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { pageHref } from '../lib/pages';
 
 type Page = CollectionEntry<'pages'>;
+type Section = NonNullable<Page['data']['section']>;
 
-const groups: { heading: string; match: (page: Page) => boolean }[] = [
-  { heading: 'Guides', match: (p) => p.data.section === 'guides' },
-  { heading: 'Financial Models', match: (p) => p.data.section === 'models' },
-  { heading: 'Interactive Tools', match: (p) => p.data.section === 'tools' },
-  { heading: 'Compliance Documents', match: (p) => p.data.section === 'docs' },
-  { heading: 'Reference', match: () => true },
-];
-
-const slugOf = (page: Page) => page.id.replace(/\.(md|mdx)$/, '').replace(/(^|\/)index$/, '');
-const isIndex = (page: Page) => page.data.template === 'section-index';
+// Typed against the schema's section enum, so a new section fails typecheck until it
+// has a heading here. Headings print in the order they first appear.
+const headings: Record<Section, string> = {
+  guides: 'Guides',
+  models: 'Financial Models',
+  tools: 'Interactive Tools',
+  docs: 'Compliance Documents',
+  resources: 'Reference',
+  about: 'Reference',
+};
+const headingOf = (p: Page) => (p.data.section ? headings[p.data.section] : 'Reference');
 
 export const GET: APIRoute = async ({ site }) => {
   const pages = await getCollection('pages', ({ data }) => !data.draft);
-  const remaining = new Set(pages);
 
-  const sections = groups.map(({ heading, match }) => {
-    const members = [...remaining]
-      .filter(match)
-      .sort((a, b) => Number(isIndex(b)) - Number(isIndex(a)) || a.data.title.localeCompare(b.data.title));
-    members.forEach((p) => remaining.delete(p));
-    const lines = members.map((p) => {
-      const url = new URL(`/${slugOf(p)}/`.replace(/\/+$/, '/'), site);
-      return `- [${p.data.title}](${url}): ${p.data.description}`;
-    });
+  const sections = [...new Set(Object.values(headings))].map((heading) => {
+    const lines = pages
+      .filter((p) => headingOf(p) === heading)
+      .sort((a, b) =>
+        Number(b.data.template === 'section-index') - Number(a.data.template === 'section-index')
+        || a.data.title.localeCompare(b.data.title))
+      .map((p) => `- [${p.data.title}](${new URL(pageHref(p.id), site)}): ${p.data.description}`);
     return `## ${heading}\n\n${lines.join('\n')}`;
   });
 

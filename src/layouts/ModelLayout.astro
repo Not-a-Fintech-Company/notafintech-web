@@ -26,12 +26,10 @@ const crumbs = [
   { label: title },
 ];
 
-const schema = publishedAt
-  ? articleSchema({
-      title, description, site: Astro.site!, pathname: Astro.url.pathname,
-      ogImage, publishedAt, updatedAt, authors,
-    })
-  : undefined;
+const schema = articleSchema({
+  title, description, site: Astro.site!, pathname: Astro.url.pathname,
+  ogImage, publishedAt, updatedAt, authors,
+});
 ---
 
 <BaseLayout

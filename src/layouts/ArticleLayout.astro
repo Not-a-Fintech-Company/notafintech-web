@@ -43,12 +43,10 @@ const crumbs = [
 const showSidebar = !hideSidebar && !!section;
 const showToc = !hideToc;
 
-const schema = publishedAt
-  ? articleSchema({
-      title, description, site: Astro.site!, pathname: Astro.url.pathname,
-      ogImage, publishedAt, updatedAt, authors,
-    })
-  : undefined;
+const schema = articleSchema({
+  title, description, site: Astro.site!, pathname: Astro.url.pathname,
+  ogImage, publishedAt, updatedAt, authors,
+});
 ---
 
 <BaseLayout

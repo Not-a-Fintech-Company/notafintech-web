@@ -1,4 +1,6 @@
 // src/data/roadmap.ts
+import { repoUrl } from './navigation';
+
 export type Status = 'published' | 'drafting' | 'planned' | 'external';
 
 export interface RoadmapItem {
@@ -14,12 +16,13 @@ export interface RoadmapCategory {
 
 export interface RoadmapSection {
   title: string;
-  /** GitHub issue tracking this section's planned items. */
+  /** GitHub issue tracking this section's planned items. Its checklist and this
+   *  section's `planned` items are kept in sync by hand; edit both together. */
   issue: number;
   categories: RoadmapCategory[];
 }
 
-export const issuesUrl = 'https://github.com/Not-a-Fintech-Company/notafintech-web/issues';
+export const issuesUrl = `${repoUrl}/issues`;
 
 export const roadmap: RoadmapSection[] = [
   {

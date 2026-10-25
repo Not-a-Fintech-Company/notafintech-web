@@ -11,6 +11,9 @@ const statusMeta: Record<Status, { label: string; iconName: string }> = {
 };
 
 const icons = { FileText, PenLine, Circle, ExternalLink };
+
+const linkClass =
+  'underline underline-offset-[3px] decoration-1 decoration-[color:var(--color-rule)] hover:text-accent hover:decoration-[color:var(--color-accent)] transition-colors';
 ---
 
 <section class="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24">
@@ -36,7 +39,7 @@ const icons = { FileText, PenLine, Circle, ExternalLink };
             href={`${issuesUrl}/${section.issue}`}
             rel="noopener noreferrer"
             target="_blank"
-            class="inline-flex items-center gap-1.5 text-sm text-muted underline underline-offset-[3px] decoration-1 decoration-[color:var(--color-rule)] hover:text-accent hover:decoration-[color:var(--color-accent)] transition-colors"
+            class:list={['inline-flex items-center gap-1.5 text-sm text-muted', linkClass]}
           >
             Planned work on GitHub
             <ExternalLink class="w-3.5 h-3.5" aria-hidden="true" />
@@ -65,8 +68,7 @@ const icons = { FileText, PenLine, Circle, ExternalLink };
                         class:list={[
                           'flex items-start gap-2 text-sm leading-snug',
                           item.status === 'planned' ? 'text-muted' : 'text-ink',
-                          isLink &&
-                            'underline underline-offset-[3px] decoration-1 decoration-[color:var(--color-rule)] hover:text-accent hover:decoration-[color:var(--color-accent)] transition-colors',
+                          isLink && linkClass,
                         ]}
                       >
                         <Icon class:list={[

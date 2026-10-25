@@ -36,7 +36,7 @@ const schema = articleSchema({
   {title}
   {description}
   {ogImage}
-  pageType={schema ? 'article' : undefined}
+  pageType="article"
   publishedTime={publishedAt}
   modifiedTime={updatedAt ?? publishedAt}
   {schema}

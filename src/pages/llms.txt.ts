@@ -49,5 +49,6 @@ No attribution required. Free to use, reproduce, and redistribute without restri
 hello@notafintech.co
 `;
 
-  return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  // Static output keeps only the body; Cloudflare serves .txt as text/plain; charset=utf-8.
+  return new Response(body);
 };

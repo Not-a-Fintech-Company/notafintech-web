@@ -20,7 +20,8 @@ export interface ArticleSchemaInput {
 export function articleSchema(input: ArticleSchemaInput) {
   const { title, description, site, pathname, ogImage = '/og-image.png', publishedAt, updatedAt, authors } = input;
   if (!publishedAt) return undefined;
-  const id = (fragment: string) => ({ '@id': new URL(`/#${fragment}`, site).toString() });
+  // Same @id form as the Organization/WebSite graph in BaseLayout.
+  const id = (fragment: string) => ({ '@id': `${site.toString().replace(/\/$/, '')}/#${fragment}` });
   const canonicalUrl = new URL(pathname, site).toString();
   // JSON.stringify drops an undefined url, so no conditional spread is needed.
   const author = authors && authors.length > 0

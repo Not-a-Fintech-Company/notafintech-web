@@ -9,6 +9,7 @@ import GuideCard from '../components/blocks/GuideCard.astro';
 import RoadmapGrid from '../components/blocks/RoadmapGrid.astro';
 import { getCollection } from 'astro:content';
 import { ArrowRight } from '@lucide/astro';
+import { repoUrl } from '../data/navigation';
 
 const guides = await getCollection('pages', ({ data }) =>
   data.section === 'guides' && data.template !== 'section-index' && !data.draft
@@ -104,7 +105,7 @@ const description = 'All the pieces you need to start, build, and run a fintech 
           <ul class="mt-6 space-y-3">
             <li>
               <a
-                href="https://github.com/Not-a-Fintech-Company/notafintech-web"
+                href={repoUrl}
                 rel="noopener noreferrer"
                 target="_blank"
                 class="group inline-flex items-center gap-2 font-display text-lg text-ink underline decoration-1 decoration-[color:var(--color-rule)] underline-offset-[4px] hover:text-accent hover:decoration-[color:var(--color-accent)] transition-colors"

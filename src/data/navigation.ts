@@ -4,6 +4,8 @@ export interface NavItem {
   external?: boolean;
 }
 
+export const repoUrl = 'https://github.com/Not-a-Fintech-Company/notafintech-web';
+
 export const topNav: NavItem[] = [
   { label: 'Guides', href: '/guides/' },
   { label: 'Models', href: '/models/' },
@@ -16,7 +18,7 @@ export const topNav: NavItem[] = [
 export const footerSections: NavItem[] = [...topNav];
 
 export const footerCommunity: NavItem[] = [
-  { label: 'GitHub', href: 'https://github.com/Not-a-Fintech-Company/notafintech-web', external: true },
-  { label: 'Contribute', href: 'https://github.com/Not-a-Fintech-Company/notafintech-web/blob/main/README.md', external: true },
+  { label: 'GitHub', href: repoUrl, external: true },
+  { label: 'Contribute', href: `${repoUrl}/blob/main/README.md`, external: true },
   { label: 'hello@notafintech.co', href: 'mailto:hello@notafintech.co' },
 ];

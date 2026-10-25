@@ -2,6 +2,7 @@
 // src/components/blocks/Hero.astro
 import { ArrowRight } from '@lucide/astro';
 import GithubIcon from '../ui/GithubIcon.astro';
+import { repoUrl } from '../../data/navigation';
 ---
 
 <section class="relative max-w-7xl mx-auto px-4 md:px-6 pt-16 md:pt-32 pb-14 md:pb-24">
@@ -23,7 +24,7 @@ import GithubIcon from '../ui/GithubIcon.astro';
         <ArrowRight class="w-4 h-4" />
       </a>
       <a
-        href="https://github.com/Not-a-Fintech-Company/notafintech-web"
+        href={repoUrl}
         rel="noopener noreferrer"
         target="_blank"
         class="inline-flex items-center gap-2 px-6 py-3.5 rounded-md border-2 border-ink text-ink font-semibold hover:bg-ink hover:text-paper transition-colors"

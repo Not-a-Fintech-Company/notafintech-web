@@ -1,6 +1,6 @@
 ---
 // src/components/layout/Header.astro
-import { topNav } from '../../data/navigation';
+import { topNav, repoUrl } from '../../data/navigation';
 import ThemeToggle from '../ui/ThemeToggle.astro';
 import GithubIcon from '../ui/GithubIcon.astro';
 import { Search, Menu } from '@lucide/astro';
@@ -46,7 +46,7 @@ const isActive = (href: string) =>
       <ThemeToggle />
 
       <a
-        href="https://github.com/Not-a-Fintech-Company/notafintech-web"
+        href={repoUrl}
         rel="noopener noreferrer"
         target="_blank"
         class="inline-flex items-center justify-center w-11 h-11 rounded-md text-ink hover:bg-surface-2 transition-colors"

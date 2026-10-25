@@ -2,6 +2,7 @@
 // src/layouts/BaseLayout.astro
 import '../styles/global.css';
 import SearchModal from '../components/ui/SearchModal.tsx';
+import { repoUrl } from '../data/navigation';
 import ebGaramondLatin from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
 import hankenGroteskLatin from '@fontsource-variable/hanken-grotesk/files/hanken-grotesk-latin-wght-normal.woff2?url';
 
@@ -46,7 +47,7 @@ const orgWebsiteGraph = {
       name: siteName,
       url: `${siteUrl}/`,
       logo: `${siteUrl}/og-image.png`,
-      sameAs: ['https://github.com/Not-a-Fintech-Company/notafintech-web'],
+      sameAs: [repoUrl],
     },
     {
       '@type': 'WebSite',

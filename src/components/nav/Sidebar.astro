@@ -1,6 +1,7 @@
 ---
 // src/components/nav/Sidebar.astro
 import { getCollection } from 'astro:content';
+import { pageHref } from '../../lib/pages';
 
 interface Props {
   section: string;
@@ -29,7 +30,7 @@ const sectionLabel = section.charAt(0).toUpperCase() + section.slice(1);
     </a>
     <ul class="mt-3 space-y-0.5">
       {all.map((entry) => {
-        const href = `/${entry.id.replace(/\.(md|mdx)$/, '/').replace(/\/index\/$/, '/')}`;
+        const href = pageHref(entry.id);
         const active = entry.id === currentSlug;
         return (
           <li>

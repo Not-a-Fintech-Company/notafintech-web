@@ -10,6 +10,7 @@ import RoadmapGrid from '../components/blocks/RoadmapGrid.astro';
 import { getCollection } from 'astro:content';
 import { ArrowRight } from '@lucide/astro';
 import { repoUrl } from '../data/navigation';
+import { pageHref } from '../lib/pages';
 
 const guides = await getCollection('pages', ({ data }) =>
   data.section === 'guides' && data.template !== 'section-index' && !data.draft
@@ -44,7 +45,7 @@ const description = 'All the pieces you need to start, build, and run a fintech 
       </header>
       <div class="grid gap-6 md:grid-cols-3">
         {featuredGuides.map((g) => {
-          const href = `/${g.id.replace(/\.(md|mdx)$/, '/').replace(/\/index\/$/, '/')}`;
+          const href = pageHref(g.id);
           return (
             <GuideCard
               title={g.data.title}
@@ -72,7 +73,7 @@ const description = 'All the pieces you need to start, build, and run a fintech 
       </header>
       <ol class="grid gap-x-10 gap-y-8 md:grid-cols-3 list-none border-t border-rule pt-8">
         {models.map((m, i) => {
-          const href = `/${m.id.replace(/\.(md|mdx)$/, '/').replace(/\/index\/$/, '/')}`;
+          const href = pageHref(m.id);
           const num = String(i + 1).padStart(2, '0');
           return (
             <li class="flex flex-col gap-2">

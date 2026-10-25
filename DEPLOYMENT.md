@@ -50,10 +50,9 @@ public/                  # Static files served as-is:
                          #   - favicon.svg (source), favicon.png (32x32 fallback)
                          #   - apple-touch-icon.png (180x180)
                          #   - og-image.svg (source), og-image.png (1200x630 social preview)
-                         #   - robots.txt
+                         #   - robots.txt (wildcard allow + named AI crawlers)
                          #   - _redirects (Jekyll-era 301s + sitemap.xml redirect)
                          #   - _headers (HSTS, CSP, immutable cache TTL)
-                         #   - llms.txt (AI-search crawler manifest)
                          #   - <uuid>.txt (IndexNow verification key)
                          #   - credit-card-biz-trunk.pdf / .ppt
 astro.config.mjs         # Astro configuration (Preact, MDX, sitemap with per-URL lastmod, Tailwind v4)

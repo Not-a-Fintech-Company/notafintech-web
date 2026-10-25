@@ -5,6 +5,7 @@ import Header from '../components/layout/Header.astro';
 import MobileMenu from '../components/layout/MobileMenu.astro';
 import Footer from '../components/layout/Footer.astro';
 import { getCollection } from 'astro:content';
+import { pageHref } from '../lib/pages';
 import { ArrowRight } from '@lucide/astro';
 
 interface Props {
@@ -49,7 +50,7 @@ entries.sort((a, b) => {
     {entries.length > 0 ? (
       <ul class="mt-16 divide-y divide-rule border-t border-rule">
         {entries.map((entry) => {
-          const href = `/${entry.id.replace(/\.(md|mdx)$/, '/').replace(/\/index\/$/, '/')}`;
+          const href = pageHref(entry.id);
           return (
             <li>
               <a

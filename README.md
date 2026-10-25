@@ -45,7 +45,7 @@ src/
 ├── pages/               # Astro routes (index.astro home, [...slug].astro dynamic)
 ├── content.config.ts    # Content collection schema
 └── styles/global.css    # Tailwind v4 entry, theme tokens, prose styles, font fallbacks
-public/                  # Static assets (favicons, robots.txt, _redirects, _headers, llms.txt, PDFs, IndexNow key)
+public/                  # Static assets (favicons, robots.txt, _redirects, _headers, PDFs, IndexNow key)
 astro.config.mjs         # Astro config (Preact, MDX, sitemap with per-URL lastmod, Tailwind v4)
 .github/workflows/       # GitHub Actions (indexnow.yml submits URLs to IndexNow on push)
 scripts/                 # One-off generation scripts (e.g. font-fallbacks.mjs)
@@ -66,9 +66,9 @@ Each page uses YAML frontmatter with `title`, `description`, `section`, `templat
 
 ## SEO infrastructure
 
-- **JSON-LD structured data** — Organization + WebSite graph sitewide; Article + BreadcrumbList on guide pages; SoftwareApplication on `/tools/term-loan/`
+- **JSON-LD structured data** — Organization + WebSite graph sitewide; Article + BreadcrumbList on guide, model, and doc pages; SoftwareApplication on `/tools/term-loan/`
 - **Per-URL `<lastmod>`** — `@astrojs/sitemap` `serialize` callback reads `updatedAt` from frontmatter at build time
-- **`llms.txt`** — manifest for AI search crawlers (Perplexity, ChatGPT, Claude, etc.)
+- **`llms.txt`** — manifest for AI search crawlers (Perplexity, ChatGPT, Claude, etc.), generated at build time from the content collection by `src/pages/llms.txt.ts`
 - **IndexNow** — GitHub Action submits all sitemap URLs to Bing/Yandex/Naver/Seznam on every push to `main`
 - **Security + caching headers** — `public/_headers` sets HSTS preload, CSP, X-Frame-Options, and immutable cache TTL on `_astro/*` content-hashed assets
 - **Per-article bylines** — `authors` frontmatter field renders a visible "By X" line and `Person` objects in Article JSON-LD

@@ -6,14 +6,18 @@ import MobileMenu from '../components/layout/MobileMenu.astro';
 import Footer from '../components/layout/Footer.astro';
 import Breadcrumbs from '../components/nav/Breadcrumbs.astro';
 import Prose from '../components/ui/Prose.astro';
+import { articleSchema, type Author } from '../lib/article-schema';
 
 interface Props {
   title: string;
   description: string;
   section?: string;
   ogImage?: string;
+  publishedAt?: Date;
+  updatedAt?: Date;
+  authors?: Author[];
 }
-const { title, description, section, ogImage } = Astro.props;
+const { title, description, section, ogImage, publishedAt, updatedAt, authors } = Astro.props;
 
 const sectionLabel = section ? section.charAt(0).toUpperCase() + section.slice(1) : null;
 const crumbs = [
@@ -21,9 +25,22 @@ const crumbs = [
   ...(section ? [{ label: sectionLabel!, href: `/${section}/` }] : []),
   { label: title },
 ];
+
+const schema = articleSchema({
+  title, description, site: Astro.site!, pathname: Astro.url.pathname,
+  ogImage, publishedAt, updatedAt, authors,
+});
 ---
 
-<BaseLayout {title} {description} {ogImage}>
+<BaseLayout
+  {title}
+  {description}
+  {ogImage}
+  pageType="article"
+  publishedTime={publishedAt}
+  modifiedTime={updatedAt ?? publishedAt}
+  {schema}
+>
   <Header />
   <MobileMenu />
 

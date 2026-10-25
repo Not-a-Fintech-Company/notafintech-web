@@ -68,7 +68,7 @@ wrangler.jsonc           # Local Wrangler CLI deploys only — Git-connected Pag
 
 1. Log in to the [Cloudflare dashboard](https://dash.cloudflare.com) and go to **Workers & Pages**.
 2. Click **Create** > **Pages** > **Connect to Git**.
-3. Select the **Not-a-Fintech-Company/Website** repository and the **main** branch.
+3. Select the **Not-a-Fintech-Company/notafintech-web** repository and the **main** branch.
 4. Configure the build settings:
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`

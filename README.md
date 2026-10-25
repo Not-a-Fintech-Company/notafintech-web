@@ -58,7 +58,7 @@ docs/                    # Internal documentation + historical SEO audits
 |---|---|
 | `guides/` | 5 long-form guides for fintech founders, each with a named author byline |
 | `models/` | 3 Google Sheets-backed financial models (bank account, credit card, term loan) |
-| `tools/` | Interactive calculators — Term Loan Unit Economics is live; Bank Account and Credit Card are stubs with rich previews |
+| `tools/` | Interactive calculators — Term Loan Unit Economics is live; Bank Account and Credit Card calculators are planned (their stubs were folded into `/models/*` and redirect there) |
 | `docs/` | Compliance documents (BSA/AML sample policy, credit card business trunk) |
 | `resources.md`, `about.md`, `license.md` | Top-level pages |
 

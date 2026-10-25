@@ -5,6 +5,9 @@ section: docs
 template: article
 publishedAt: 2026-02-19
 updatedAt: 2026-05-16
+authors:
+  - name: Mark Kallal
+    url: https://www.linkedin.com/in/mkallal/
 ---
 
 :::note
